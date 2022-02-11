@@ -11,7 +11,7 @@ jobs:
           export SYNCFILE="lastsync.txt"
           export REMOTEFILE="https://dav.jianguoyun.com/dav/zotero/${SYNCFILE}"
           touch ${SYNCFILE}
-          curl -u ${KOOFR_EMAIL}:${KOOFR_DAVPASS} -T ${SYNCFILE} ${REMOTEFILE}
+          curl -u ${JIANGUOYUN_EMAIL}:${JIANGUOYUN_DAVPASS} -T ${SYNCFILE} ${REMOTEFILE}
         env:
-          KOOFR_EMAIL: ${{ secrets.JIANGUOYUN_EMAIL }}
-          KOOFR_DAVPASS: ${{ secrets.JIANGUOYUN_DAVPASS }}
+          JIANGUOYUN_EMAIL: ${{ secrets.JIANGUOYUN_EMAIL }}
+          JIANGUOYUN_DAVPASS: ${{ secrets.JIANGUOYUN_DAVPASS }}
