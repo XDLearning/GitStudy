@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Fix
+        env:
+          JIANGUOYUN_EMAIL: ${{ secrets.JIANGUOYUN_EMAIL }}
+          JIANGUOYUN_DAVPASS: ${{ secrets.JIANGUOYUN_DAVPASS }}
         run: |
           export SYNCFILE="lastsync.txt"
           export REMOTEFILE="https://dav.jianguoyun.com/dav/zotero/${SYNCFILE}"
           touch ${SYNCFILE}
           curl -u ${JIANGUOYUN_EMAIL}:${JIANGUOYUN_DAVPASS} -T ${SYNCFILE} ${REMOTEFILE}
-        env:
-          JIANGUOYUN_EMAIL: ${{ secrets.JIANGUOYUN_EMAIL }}
-          JIANGUOYUN_DAVPASS: ${{ secrets.JIANGUOYUN_DAVPASS }}
