@@ -11,7 +11,5 @@ jobs:
           JIANGUOYUN_EMAIL: ${{ secrets.JIANGUOYUN_EMAIL }}
           JIANGUOYUN_DAVPASS: ${{ secrets.JIANGUOYUN_DAVPASS }}
         run: |
-          export SYNCFILE="lastsync.txt"
-          export REMOTEFILE="https://dav.jianguoyun.com/dav/zotero/${SYNCFILE}"
-          touch ${SYNCFILE}
-          curl -u ${JIANGUOYUN_EMAIL}:${JIANGUOYUN_DAVPASS} -T ${SYNCFILE} ${REMOTEFILE}
+          touch lastsync.txt
+          curl -u ${JIANGUOYUN_EMAIL}:${JIANGUOYUN_DAVPASS} -T lastsync.txt https://dav.jianguoyun.com/dav/zotero/lastsync.txt
