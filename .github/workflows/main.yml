@@ -1,9 +1,6 @@
 name: webdav_lastsync
 
-on:
-  schedule:
-    - cron: '0 4,16 * * *'
-  workflow_dispatch:
+on: [push]
 
 jobs:
   fix:
