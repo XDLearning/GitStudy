@@ -1,6 +1,8 @@
 name: webdav_lastsync
 
-on: [push]
+on: 
+  schedule:
+    -cron: '* 12,18,23 * * *'
 
 jobs:
   fix:
