@@ -10,7 +10,7 @@ jobs:
         run: |
           export SYNCFILE="lastsync.txt"
           export REMOTEFILE="https://dav.jianguoyun.com/dav/zotero/lastsync.txt"
-          touch ${SYNCFILE}
+          touch ${SYNCFILE},{REMOTEFILE}
           curl -u ${JIANGUOYUN_EMAIL}:${JIANGUOYUN_DAVPASS} -T ${SYNCFILE} ${REMOTEFILE}
         env:
           JIANGUOYUN_EMAIL: ${{ secrets.JIANGUOYUN_EMAIL }}
