@@ -1,17 +1,20 @@
-name: Greeting from Mona                               #名字
-on: [push]                                               #触发条件
+name: webdav_lastsync
+
+on:
+  schedule:
+    - cron: '0 4,16 * * *'
+  workflow_dispatch:
 
 jobs:
-  my-job:                                              #第一个job的ID
-    name: My Job                                       #job的名字
-    runs-on: ubuntu-latest                             #运行的系统
-    steps:                                             #job里面的步骤
-    - name: Print a greeting                           #step的名字
-      env:                                             #引入环境变量
-        MY_VAR: Hi there! My name is
-        FIRST_NAME: Mona
-        MIDDLE_NAME: The
-        LAST_NAME: Octocat
-      run: |                                           #运行的动作结果
-        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
-        echo hello!
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: update
+      - run: |
+          export SYNCFILE="lastsync.txt"
+          export REMOTEFILE="https://dav.jianguoyun.com/dav/zotero/lastsync.txt"
+          touch ${SYNCFILE}
+          curl -u ${JIANGUOYUN_EMAIL}:${JIANGUOYUN_DAVPASS} -T ${SYNCFILE} ${REMOTEFILE}
+        env:
+          JIANGUOYUN_EMAIL: ${{ secrets.JIANGUOYUN_EMAIL }}
+          JIANGUOYUN_DAVPASS: ${{ secrets.JIANGUOYUN_DAVPASS }}
