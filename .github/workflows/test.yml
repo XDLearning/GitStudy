@@ -1,0 +1,15 @@
+name: test
+
+on: [push]
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fix
+        env:
+          JIANGUOYUN_EMAIL: ${{ secrets.JIANGUOYUN_EMAIL }}
+          JIANGUOYUN_DAVPASS: ${{ secrets.JIANGUOYUN_DAVPASS }}
+        run: |
+          echo ${JIANGUOYUN_EMAIL}
+          echo ${JIANGUOYUN_DAVPASS}
