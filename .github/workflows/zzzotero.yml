@@ -2,7 +2,7 @@ name: zz_webdav_lastsync
 
 on: 
   schedule:
-    - cron: '55 * * * *'
+    - cron: '0 4,10,15 * * *'
   workflow_dispatch:
 
 jobs:
